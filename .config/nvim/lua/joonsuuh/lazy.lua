@@ -15,19 +15,19 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+require("lazy").setup({
   spec = {
     -- import your plugins
     { import = "joonsuuh.plugins" },
   },
-  install = { colorscheme = {'catppuccin'} },
+  install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
   ui = {
-    border = 'rounded',
+    border = "rounded",
   },
 })
 
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme("catppuccin")
 
 -- || vim modeline ||
 -- vim: ts=2 sts=2 sw=2 et
