@@ -64,10 +64,25 @@ vim.opt.confirm = true
 -- highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
+})
+
+-- Set highlight after Netrw is loaded
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    -- Clear existing highlight
+    vim.api.nvim_set_hl(0, "netrwMarkFile", {})
+
+    -- Set your custom highlight
+    vim.api.nvim_set_hl(0, "netrwMarkFile", {
+      fg = "#e78284",   -- gold/yellow
+      -- bg = "#303446",   -- dark gray
+    })
+  end
 })
 
 -- just colors

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+# very useful, yes indeed, will use
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume output volume 100'"

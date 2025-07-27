@@ -6,6 +6,10 @@ return {
     opts = {
       flavour = "frappe",
       -- transparent_background = true,
+      integrations = {
+        mason = true,
+        which_key = true,
+      },
     },
   },
 

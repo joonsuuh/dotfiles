@@ -23,11 +23,25 @@ require("lazy").setup({
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
   ui = {
+    backdrop = 100,
     border = "rounded",
   },
 })
 
 vim.cmd.colorscheme("catppuccin")
+
+-- Highlight overrides
+local colors = require("catppuccin.palettes").get_palette("frappe")
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.base })
+vim.api.nvim_set_hl(0, "TelescopeBorder",         { bg = colors.base, fg = colors.lavender })
+-- vim.api.nvim_set_hl(0, "TelescopePromptNormal",   { bg = colors.surface0 })
+-- vim.api.nvim_set_hl(0, "TelescopePromptBorder",   { bg = colors.surface0, fg = colors.surface1 })
+-- vim.api.nvim_set_hl(0, "TelescopeResultsNormal",  { bg = colors.base })
+-- vim.api.nvim_set_hl(0, "TelescopePreviewNormal",  { bg = colors.base })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", fg = "NONE" })
+vim.api.nvim_set_hl(0, "MasonNormal", { bg = "NONE", fg = colors.text })
+vim.api.nvim_set_hl(0, "LazyNormal", {bg = "NONE", fg = colors.text })
+
 
 -- || vim modeline ||
 -- vim: ts=2 sts=2 sw=2 et
