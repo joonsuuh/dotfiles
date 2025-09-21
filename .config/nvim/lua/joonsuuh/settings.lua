@@ -11,7 +11,12 @@ vim.g.vimtex_view_method = 'skim'
 -- || vim options ||
 vim.opt.number = true
 vim.opt.relativenumber = true
--- vim.opt.expandtab = true -- tabs == spaces
+
+-- tabs, tabs, tabs...
+vim.opt.expandtab = true -- tabs == spaces
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
 
 vim.opt.mouse = 'a' -- mouse on
 vim.opt.showmode = false -- hide mode
@@ -84,6 +89,8 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end
 })
+
+-- vim.o.winborder = "none"
 
 -- just colors
 -- vim.api.nvim_set_hl(0, 'LineNr', { fg = 'white' })

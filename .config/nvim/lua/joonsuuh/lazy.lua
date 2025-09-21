@@ -24,7 +24,7 @@ require("lazy").setup({
   checker = { enabled = true },
   ui = {
     backdrop = 100,
-    border = "rounded",
+    -- border = "rounded",
   },
 })
 
@@ -32,16 +32,15 @@ vim.cmd.colorscheme("catppuccin")
 
 -- Highlight overrides
 local colors = require("catppuccin.palettes").get_palette("frappe")
+local telescope_hl = colors.lavender
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = colors.base })
-vim.api.nvim_set_hl(0, "TelescopeBorder",         { bg = colors.base, fg = colors.lavender })
--- vim.api.nvim_set_hl(0, "TelescopePromptNormal",   { bg = colors.surface0 })
--- vim.api.nvim_set_hl(0, "TelescopePromptBorder",   { bg = colors.surface0, fg = colors.surface1 })
--- vim.api.nvim_set_hl(0, "TelescopeResultsNormal",  { bg = colors.base })
--- vim.api.nvim_set_hl(0, "TelescopePreviewNormal",  { bg = colors.base })
-vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE", fg = "NONE" })
-vim.api.nvim_set_hl(0, "MasonNormal", { bg = "NONE", fg = colors.text })
-vim.api.nvim_set_hl(0, "LazyNormal", {bg = "NONE", fg = colors.text })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.base, fg = telescope_hl })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = colors.base })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.base })
+vim.api.nvim_set_hl(0, "FloatTitle", { bg = telescope_hl, fg = colors.crust })
 
+-- vim.api.nvim_set_hl(0, "Pmenu", { bg = colors.base })
+-- vim.api.nvim_set_hl(0, "PmenuSel", { bg = colors.base })
 
 -- || vim modeline ||
 -- vim: ts=2 sts=2 sw=2 et

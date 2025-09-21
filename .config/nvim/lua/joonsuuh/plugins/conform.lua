@@ -43,7 +43,7 @@ return { -- Autoformat
       clang_format = {
         command = "clang-format",
         args = {
-          "--style={BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Allman, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AccessModifierOffset: -4, PointerAlignment: Left, Cpp11BracedListStyle: false, SpaceBeforeCpp11BracedList: true, BinPackArguments: false, BreakConstructorInitializers: BeforeComma}",
+          "--style={BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Allman, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AccessModifierOffset: -4, PointerAlignment: Left, Cpp11BracedListStyle: false, SpaceBeforeCpp11BracedList: true, BinPackArguments: false, BreakConstructorInitializers: BeforeComma, ColumnLimit: 120}",
         },
       },
     },

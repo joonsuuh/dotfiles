@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# remove bloat
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
 # very useful, yes indeed, will use
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 100'"

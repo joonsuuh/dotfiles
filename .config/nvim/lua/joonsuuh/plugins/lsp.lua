@@ -18,7 +18,7 @@ return {
         opts = {
           ui = {
             backdrop = 100,
-            border = "rounded",
+            -- border = "rounded",
           },
         },
       },
@@ -174,8 +174,11 @@ return {
         capabilities = require('blink.cmp').get_lsp_capabilities(),
         cmd = {
           'clangd',
+          '--background-index',
           '--clang-tidy',
+          "--clang-tidy-checks=*",
           '--header-insertion=never',
+          '--log=verbose',
         }
       }
 
