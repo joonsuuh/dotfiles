@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
 # remove bloat
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanup='find "$HOME" \
+    \( -path "$HOME/Library" -o -path "$HOME/.Trash" \) -prune -o \
+    -type f -name "*.DS_Store" -print -delete 2>/dev/null'
 
 # very useful, yes indeed, will use
 alias stfu="osascript -e 'set volume output muted true'"
