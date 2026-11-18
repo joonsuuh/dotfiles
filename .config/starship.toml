@@ -11,9 +11,9 @@ palette = "catppuccin_frappe"
 # Starship modules
 [character]
 # Note the use of Catppuccin color 'peach'
-success_symbol = "[[󰄛](flamingo) ❯](peach)"
-error_symbol = "[[󰄛](red) ❯](peach)"
-vimcmd_symbol = "[󰄛 ❮](subtext1)" # For use with zsh-vi-mode
+success_symbol = "[❯](peach)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](subtext1)" # For use with zsh-vi-mode
 
 [git_branch]
 style = "bold mauve"
