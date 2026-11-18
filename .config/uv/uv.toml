@@ -1,0 +1,4 @@
+# uv settings: https://docs.astral.sh/uv/reference/settings/
+# uv uses only the Python builds that it installs. A venv then does not
+# depend on Homebrew, deadsnakes, or the system Python.
+python-preference = "only-managed"
