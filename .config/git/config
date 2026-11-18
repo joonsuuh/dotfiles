@@ -1,0 +1,14 @@
+# Git settings for every machine.
+#
+# Git reads this file, then ~/.gitconfig. Keep ~/.gitconfig for the settings
+# that tools write on one machine, such as `gh auth setup-git` and
+# `git lfs install`. Keep [user] out of ~/.gitconfig: a later file wins.
+
+# The default identity. The file is private and can be missing; Git then
+# skips it.
+[include]
+	path = ~/.config/git/work
+
+# This repo uses the personal identity. The later include wins.
+[includeIf "gitdir:~/dotfiles/"]
+	path = ~/.config/git/personal

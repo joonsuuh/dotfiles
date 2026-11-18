@@ -1,0 +1,6 @@
+# Private files that link into this folder. They live outside this repo.
+.config/git/work
+.config/shell/private.sh
+
+# TPM installs the tmux plugins.
+.config/tmux/plugins/

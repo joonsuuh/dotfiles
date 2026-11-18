@@ -1,0 +1,5 @@
+# Personal identity for the dotfiles repo. The email is the GitHub
+# no-reply address of the joonsuuh account.
+[user]
+	name = joonsuuh
+	email = 77906217+joonsuuh@users.noreply.github.com
