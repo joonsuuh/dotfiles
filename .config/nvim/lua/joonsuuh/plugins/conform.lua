@@ -1,51 +1,31 @@
-return { -- Autoformat
-  "stevearc/conform.nvim",
-  event = { "BufWritePre" },
-  cmd = { "ConformInfo" },
-  keys = {
-    {
-      "<leader>f",
-      function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
-      end,
-      mode = "",
-      desc = "[F]ormat buffer",
-    },
-  },
-  opts = {
-    notify_on_error = false,
-    -- format_on_save = function(bufnr)
-    --   -- Disable "format_on_save lsp_fallback" for languages that don't
-    --   -- have a well standardized coding style. You can add additional
-    --   -- languages here or re-enable it for the disabled ones.
-    --   local disable_filetypes = { c = true, cpp = true, cuda = true, lua = true }
-    --   if disable_filetypes[vim.bo[bufnr].filetype] then
-    --     return nil
-    --   else
-    --     return {
-    --       timeout_ms = 500,
-    --       lsp_format = "fallback",
-    --     }
-    --   end
-    -- end,
-    formatters_by_ft = {
-      lua = { "stylua" },
-      cpp = { "clang_format" },
-    },
+-- Format the buffer with <leader>f. A file type with no formatter here uses
+-- its language server.
+local pack = require("joonsuuh.pack")
 
-    formatters = {
-      stylua = {
-        args = {
-          "--indent-type",
-          "Spaces",
-        },
-      },
-      clang_format = {
-        command = "clang-format",
-        args = {
-          "--style={BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Allman, AllowShortFunctionsOnASingleLine: None, AllowShortIfStatementsOnASingleLine: false, AllowShortLoopsOnASingleLine: false, AccessModifierOffset: -4, PointerAlignment: Left, Cpp11BracedListStyle: false, SpaceBeforeCpp11BracedList: true, BinPackArguments: false, BreakConstructorInitializers: BeforeComma, ColumnLimit: 120}",
-        },
-      },
+pack.add({ pack.gh("stevearc/conform.nvim") })
+
+require("conform").setup({
+  notify_on_error = false,
+  formatters_by_ft = {
+    cpp = { "clang_format" },
+    cuda = { "clang_format" },
+    lua = { "stylua" },
+    python = { "ruff_format" },
+    sh = { "shfmt" },
+  },
+  formatters = {
+    stylua = {
+      -- A project .stylua.toml sets the other options.
+      prepend_args = { "--indent-type", "Spaces" },
+    },
+    clang_format = {
+      -- The project .clang-format sets the style. A file in a project with no
+      -- .clang-format stays as it is.
+      prepend_args = { "--fallback-style=none" },
     },
   },
-}
+})
+
+vim.keymap.set("", "<leader>f", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "[F]ormat buffer" })

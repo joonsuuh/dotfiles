@@ -1,12 +1,11 @@
 -- || vim global vars ||
 -- set <Space> to <Leader> key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- use the best font: ComicShannsMono
 -- https://www.nerdfonts.com/font-downloads
 vim.g.have_nerd_font = true -- set to false if not downloaded
-vim.g.vimtex_view_method = 'skim'
 
 -- || vim options ||
 vim.opt.number = true
@@ -18,26 +17,38 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
 
-vim.opt.mouse = 'a' -- mouse on
+vim.opt.mouse = "a" -- mouse on
 vim.opt.showmode = false -- hide mode
 
--- os clipboard == nvim
+-- ssh clipboard sync + os clipboard == nvim
 -- schedule at end for fast startup
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  vim.opt.clipboard = "unnamedplus"
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+  -- vim.g.clipboard = 'osc52'
 end)
 
 -- wrapped text aligns at indent
-vim.opt.breakindent = true;
+vim.opt.breakindent = true
 
 -- save undo history
-vim.opt.undofile = true;
+vim.opt.undofile = true
 
-vim.opt.ignorecase = true;
-vim.opt.smartcase = true;
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- for gitsigns space
-vim.opt.signcolumn = 'yes';
+vim.opt.signcolumn = "yes"
 
 -- decrease time for plugin update i.e. linter, swapfile update...
 vim.opt.updatetime = 250 -- ms
@@ -51,10 +62,10 @@ vim.opt.splitbelow = true
 
 -- label whitespace
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- preview substitution
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- highlight cursor line
 vim.opt.cursorline = true
@@ -67,11 +78,11 @@ vim.opt.confirm = true
 
 -- || vim api ||
 -- highlight when yanking text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -84,10 +95,10 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- Set your custom highlight
     vim.api.nvim_set_hl(0, "netrwMarkFile", {
-      fg = "#e78284",   -- gold/yellow
+      fg = "#e78284", -- gold/yellow
       -- bg = "#303446",   -- dark gray
     })
-  end
+  end,
 })
 
 -- vim.o.winborder = "none"
