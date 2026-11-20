@@ -181,6 +181,7 @@ if [ -r "${HOME}/.config/shell/private.sh" ]; then
     . "${HOME}/.config/shell/private.sh"
 fi
 
-if [[ $- == *i* ]]; then
+# Set NO_FASTFETCH, for example in private.sh, to skip the sysinfo in a terminal.
+if [[ $- == *i* && -z ${NO_FASTFETCH:-} ]]; then
     fastfetch
 fi

@@ -40,6 +40,7 @@ fi
 eval "$(starship init zsh)"
 
 # very important sysinfo
-if [[ -o interactive ]]; then
+# Set NO_FASTFETCH, for example in private.sh, to skip it in a terminal.
+if [[ -o interactive && -z ${NO_FASTFETCH:-} ]]; then
     fastfetch
 fi
